@@ -1,9 +1,9 @@
 # Description
-Beta version of a Cordova integration with SumUp's Android and iOS implementations.
+Forked version of the sumup cordova plugin. With this fork you can set the ForeignTransactionID on payments
 
 # Installation
 Add the plugin:
-cordova plugin add https://github.com/nuvoPoint/cordova-plugin-sumup --variable SUMUP_API_KEY=INSERT_YOUR_KEY
+cordova plugin add https://github.com/brinkonaut/cordova-plugin-sumup --variable SUMUP_API_KEY=INSERT_YOUR_KEY
 
 # Usage
 Importing the plugin (note, the plugin does NOT use global variables):
@@ -27,7 +27,7 @@ Log out using
 `SumUp.logout()`
 
 ## Taking Payments
-`SumUp.pay(amount: number, currencycode: string, title: string): Promise<SumUpPayment>`
+`SumUp.pay(amount: number, currencycode: string, title: string, identifier: string): Promise<SumUpPayment>`
 
 Example usage:
 ~~~~
@@ -74,6 +74,3 @@ interface SumUpPayment {
 `SumUp.settings(): Promise<void>`
 
 Opens the settings page.
-
-# FINAL NOTES
-We've moved away from Cordova, and are not actively supporting this repo at the moment.
