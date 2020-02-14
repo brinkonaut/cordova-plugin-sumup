@@ -142,12 +142,14 @@
     NSDecimal total = [(NSNumber*)[command.arguments objectAtIndex:0] decimalValue];
     NSString* currency = [command.arguments objectAtIndex:1];
     NSString* title = [command.arguments objectAtIndex:2];
+    NSString* identifier = [command.arguments objectAtIndex:3];
 
     CDVPluginResult* pluginResult = nil;
     SMPCheckoutRequest *request = [SMPCheckoutRequest requestWithTotal:[NSDecimalNumber decimalNumberWithDecimal:total] title:title
         currencyCode:currency
         paymentOptions:SMPPaymentOptionAny];
 
+    [request setForeignTransactionID:identifier];
     [request setSkipScreenOptions:SMPSkipScreenOptionSuccess];
 
     [SMPSumUpSDK checkoutWithRequest:request fromViewController:self.viewController completion:^(SMPCheckoutResult *result, NSError *error) {

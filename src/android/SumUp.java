@@ -176,11 +176,24 @@ public class SumUp extends CordovaPlugin {
         return false;
       }
 
+      String identifier;
+      try {
+          title = args.get(3).toString();
+      } catch (Exception e) {
+          JSONObject obj = new JSONObject();
+          obj.put("code", 0);
+          obj.put("message", "Can't parse identifier");
+          callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, obj));
+
+          return false;
+      }
+
       SumUpPayment payment = SumUpPayment.builder()
         .total(amount)
         .currency(currency)
         .title(title)
         .skipSuccessScreen()
+        .foreignTransactionId(identifier)
         .build();
 
       Runnable runnable = () -> {

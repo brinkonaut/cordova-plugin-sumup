@@ -71,7 +71,8 @@ declare module 'cordova-plugin-sumup' {
    * @param {number} amount
    * @param {string} currencycode
    * @param {string} title
+   * @param {string} identifier
    * @returns {Promise<SumUpPayment>} If the payment is successful
    */
-  export function pay(amount: number, currencycode: string, title: string): Promise<SumUpPayment>;
+  export function pay(amount: number, currencycode: string, title: string, identifier: string): Promise<SumUpPayment>;
 }
